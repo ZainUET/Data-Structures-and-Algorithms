@@ -1,3 +1,6 @@
+#include <iostream>
+using namespace std;
+
 class QueueArray {
 private:
     int* arr;
@@ -14,19 +17,19 @@ public:
         rearIndex = -1;
         count = 0;
     }
-    
+
     ~QueueArray() {
         delete[] arr;
     }
-    
+
     bool isEmpty() {
         return count == 0;
     }
-    
+
     bool isFull() {
         return count == capacity;
     }
-    
+
     void enqueue(int x) {
         if (isFull()) {
             cout << "Queue Overflow!" << endl;
@@ -36,7 +39,7 @@ public:
         arr[rearIndex] = x;
         count++;
     }
-    
+
     int dequeue() {
         if (isEmpty()) {
             cout << "Queue Underflow!" << endl;
@@ -47,7 +50,7 @@ public:
         count--;
         return item;
     }
-    
+
     int peek() {
         if (isEmpty()) {
             cout << "Queue is empty!" << endl;
@@ -55,7 +58,7 @@ public:
         }
         return arr[frontIndex];
     }
-    
+
     void display() {
         if (isEmpty()) {
             cout << "Queue is empty!" << endl;
@@ -69,3 +72,18 @@ public:
         cout << endl;
     }
 };
+
+int main() {
+    QueueArray q(5);
+    q.enqueue(10);
+    q.enqueue(20);
+    q.enqueue(30);
+    q.display();
+    cout << "Dequeued: " << q.dequeue() << endl;
+    q.display();
+    q.enqueue(40);
+    q.enqueue(50);
+    q.enqueue(60); 
+    q.display();
+    return 0;
+}

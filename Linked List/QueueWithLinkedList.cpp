@@ -1,3 +1,16 @@
+#include <iostream>
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+    Node(int val) {
+        data = val;
+        next = NULL;
+    }
+};
+
 class QueueLinkedList {
 private:
     Node* front;
@@ -36,11 +49,9 @@ public:
         Node* temp = front;
         int data = temp->data;
         front = front->next;
-        
         if (front == NULL) {
             rear = NULL;
         }
-        
         delete temp;
         return data;
     }
@@ -67,3 +78,14 @@ public:
         cout << endl;
     }
 };
+
+int main() {
+    QueueLinkedList q;
+    q.enqueue(10);
+    q.enqueue(20);
+    q.enqueue(30);
+    q.display();
+    cout << "Dequeued: " << q.dequeue() << endl;
+    q.display();
+    return 0;
+}
